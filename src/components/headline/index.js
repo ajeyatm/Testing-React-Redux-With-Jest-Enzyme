@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import './headline.scss'
 
 class Headline extends Component {
 	constructor(props) {
@@ -12,7 +13,7 @@ class Headline extends Component {
 		if (!headline) return null
 
 		return (
-			<div data-test='headlineComponent'>
+			<div data-test='headlineComponent' className='headline-wrapper'>
 				<h1 data-test='headline'>{headline}</h1>
 				<p data-test='desc'>{desc && desc}</p>
 			</div>
