@@ -1,13 +1,34 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Headline from './index'
-import { findByTestAttr } from '../../../Utils'
+import checkProptypes from 'check-prop-types'
+
+import { findByTestAttr, checkProps } from '../../../Utils'
 
 const setUp = (props = {}) => {
 	return shallow(<Headline {...props} />)
 }
 
 describe('Headline component', () => {
+	describe('Checking PropTypes', () => {
+		it('Should not throw any warnings', () => {
+			const propsToBeChecked = {
+				headline: 'Test headline',
+				desc: 'Desc',
+				tempArr: [
+					{
+						fName: 'ajeya',
+						age: 26,
+						online: true,
+					},
+				],
+			}
+
+			const propsErr = checkProps(Headline, propsToBeChecked)
+			expect(propsErr).toBeUndefined()
+		})
+	})
+
 	describe('With props', () => {
 		let component
 		beforeEach(() => {

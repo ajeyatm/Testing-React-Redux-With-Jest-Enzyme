@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-export default class Headline extends Component {
+class Headline extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -18,3 +19,17 @@ export default class Headline extends Component {
 		)
 	}
 }
+
+Headline.propTypes = {
+	headline: PropTypes.string,
+	desc: PropTypes.string,
+	tempArr: PropTypes.arrayOf(
+		PropTypes.shape({
+			fName: PropTypes.string,
+			age: PropTypes.number,
+			online: PropTypes.bool,
+		})
+	),
+}
+
+export default Headline
