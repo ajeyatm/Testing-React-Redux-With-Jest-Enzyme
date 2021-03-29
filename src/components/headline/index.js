@@ -3,10 +3,6 @@ import PropTypes from 'prop-types'
 import './headline.scss'
 
 class Headline extends Component {
-	constructor(props) {
-		super(props)
-	}
-
 	render() {
 		const { headline, desc } = this.props
 

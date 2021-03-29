@@ -1,6 +1,7 @@
 import Header from './components/header'
 import './app.scss'
 import Headline from './components/headline'
+import SharedButton from './components/button'
 
 const tempArr = [
 	{
@@ -20,6 +21,7 @@ function App() {
 					desc='Click the button to list the posts'
 					tempArr={tempArr}
 				/>
+				<SharedButton buttonText='Get Posts' />
 			</section>
 		</div>
 	)
