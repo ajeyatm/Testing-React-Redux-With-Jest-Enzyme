@@ -51,7 +51,7 @@
     "husky": "^6.0.0",
     "jest-enzyme": "^7.1.2",
     "moxios": "^0.4.0",
+    "pinst": "^2.1.6",
     "redux-devtools-extension": "^2.13.9"
   }
-  
 }
