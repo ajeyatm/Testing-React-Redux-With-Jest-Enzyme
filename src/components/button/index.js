@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import './button.scss'
 
 const SharedButton = ({ buttonText, emitEvent }) => {
-	const submitHandler = (e) => {
-		e.preventDefault()
+	const submitHandler = () => {
+		// e.preventDefault()
 		if (emitEvent) emitEvent()
 	}
 	return (
