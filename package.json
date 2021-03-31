@@ -22,10 +22,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "prepare": "CI=true husky install" ,
+    "pre-push": "CI=true npm run test" 
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -51,7 +51,6 @@
     "husky": "^6.0.0",
     "jest-enzyme": "^7.1.2",
     "moxios": "^0.4.0",
-    "pinst": "^2.1.6",
     "redux-devtools-extension": "^2.13.9"
   }
 }
