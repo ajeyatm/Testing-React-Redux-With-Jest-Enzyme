@@ -22,8 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "CI=true husky install" ,
-    "pre-push": "CI=true npm run test" 
+    "prepare": "husky install" 
   },
   
   "eslintConfig": {
