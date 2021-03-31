@@ -10,6 +10,14 @@ export const checkProps = (component, propsToBeChecked) =>
 	checkProptypes(component.propTypes, propsToBeChecked, 'props', component.name)
 
 export const testStore = (initialState) => {
-	const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
-	return createStoreWithMiddleware(rootReducer, initialState)
+	// const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
+	// return createStoreWithMiddleware(rootReducer, initialState)
+
+	const store = createStore(
+		rootReducer,
+		initialState,
+		applyMiddleware(...middlewares)
+	)
+
+	return store
 }

@@ -6,14 +6,16 @@ import rootReducer from './reducers'
 
 export const middlewares = [thunk]
 
-export const createStoreWithMiddlewares = composeWithDevTools(
-	applyMiddleware(...middlewares)
-)(createStore)
+// export const createStoreWithMiddlewares = applyMiddleware(...middlewares)(
+// 	createStore
+// )
 
-// const store = createStore(
-// 	reducer,
-// 	initialState,
-// 	composeWithDevTools(applyMiddleware(...middleware))
-//   )
+const initialState = {}
 
-export const store = createStoreWithMiddlewares(rootReducer)
+export const store = createStore(
+	rootReducer,
+	initialState,
+	composeWithDevTools(applyMiddleware(...middlewares))
+)
+
+// export const store = createStoreWithMiddlewares(rootReducer)
