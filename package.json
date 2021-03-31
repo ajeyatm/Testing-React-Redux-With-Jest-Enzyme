@@ -23,6 +23,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "husky":{
+    "hooks":{
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -45,8 +51,10 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
     "check-prop-types": "^1.1.2",
     "enzyme": "^3.11.0",
+    "husky": "^6.0.0",
     "jest-enzyme": "^7.1.2",
     "moxios": "^0.4.0",
     "redux-devtools-extension": "^2.13.9"
   }
+  
 }
