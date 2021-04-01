@@ -10,7 +10,9 @@ class Headline extends Component {
 
 		return (
 			<div data-test='headlineComponent' className='headline-wrapper'>
-				<h1 data-test='headline'>{headline}</h1>
+				<h1 data-test='headline' data-testid='headline'>
+					{headline}
+				</h1>
 				<p data-test='desc'>{desc && desc}</p>
 			</div>
 		)

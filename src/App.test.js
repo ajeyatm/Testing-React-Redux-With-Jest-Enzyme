@@ -1,17 +1,21 @@
 import React from 'react'
 import App from './App'
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { render, screen, cleanup, fireEvent } from '@testing-library/react'
 import { findByTestAttr, testStore } from '../Utils'
 
 const setUp = (initialState = {}) => {
 	const store = testStore(initialState)
-	const wrapper = shallow(<App store={store} />)
-		.childAt(0)
-		.dive()
+	const wrapper = render(
+		<Provider store={store}>
+			<App />
+		</Provider>
+	)
 	return wrapper
 }
 
 describe('App Component', () => {
+	afterAll(cleanup)
 	let wrapper
 	beforeEach(() => {
 		const initialState = {
@@ -34,20 +38,25 @@ describe('App Component', () => {
 	})
 
 	it('Should render without errors', () => {
-		const component = findByTestAttr(wrapper, 'appComponent')
-		expect(component.length).toBe(1)
+		expect(wrapper.getByTestId('headline').textContent).toBe('Posts')
 	})
 
-	it('exampleMethod_updatesState Method should update state as expected', () => {
-		const classInstance = wrapper.instance()
-		classInstance.exampleMethod_updatesState()
-		const newState = classInstance.state.hideBtn
-		expect(newState).toBe(true)
+	it('Should render the posts', () => {
+		expect(wrapper.getByTestId('posts').textContent).toBe(
+			'Example title 1Some textExample title 2Some textExample title 3Some text'
+		)
 	})
 
-	it('exampleMethod_returnsAValue Method should return value as expected', () => {
-		const classInstance = wrapper.instance()
-		const newValue = classInstance.exampleMethod_returnsAValue(6)
-		expect(newValue).toBe(7)
-	})
+	// it('exampleMethod_updatesState Method should update state as expected', () => {
+	// 	const classInstance = wrapper.instance()
+	// 	classInstance.exampleMethod_updatesState()
+	// 	const newState = classInstance.state.hideBtn
+	// 	expect(newState).toBe(true)
+	// })
+
+	// it('exampleMethod_returnsAValue Method should return value as expected', () => {
+	// 	const classInstance = wrapper.instance()
+	// 	const newValue = classInstance.exampleMethod_returnsAValue(6)
+	// 	expect(newValue).toBe(7)
+	// })
 })

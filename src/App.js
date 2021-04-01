@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch, connect } from 'react-redux'
 import './app.scss'
 import Header from './components/header'
@@ -20,7 +20,9 @@ const initialState = {
 	hideBtn: false,
 }
 
-class App extends React.Component {
+{
+	/*
+	class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -91,36 +93,40 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { fetchPosts })(App)
+*/
+}
 
-// function App() {
-// 	const dispatch = useDispatch()
-// 	const posts = useSelector((state) => state.posts)
+function App() {
+	const dispatch = useDispatch()
+	const posts = useSelector((state) => state.posts)
 
-// 	const buttonConfig = {
-// 		buttonText: 'Get Posts',
-// 		emitEvent: () => {
-// 			// e.preventDefault()
-// 			dispatch(fetchPosts())
-// 		},
-// 	}
-// 	// console.log(posts)
-// 	return (
-// 		<div className='App' data-test='appComponent'>
-// 			<Header />
-// 			<section className='main'>
-// 				<Headline
-// 					headline='Posts'
-// 					desc='Click the button to list the posts'
-// 					tempArr={tempArr}
-// 				/>
-// 				<SharedButton {...buttonConfig} />
-// 				{posts &&
-// 					posts.map((post, index) => (
-// 						<ListItem key={index} title={post.title} desc={post.body} />
-// 					))}
-// 			</section>
-// 		</div>
-// 	)
-// }
+	const buttonConfig = {
+		buttonText: 'Get Posts',
+		emitEvent: () => {
+			// e.preventDefault()
+			dispatch(fetchPosts())
+		},
+	}
+	// console.log(posts)
+	return (
+		<div className='App' data-testid='appComponent'>
+			<Header />
+			<section className='main'>
+				<Headline
+					headline='Posts'
+					desc='Click the button to list the posts'
+					tempArr={tempArr}
+				/>
+				<SharedButton {...buttonConfig} />
+				<div data-testid='posts'>
+					{posts &&
+						posts.map((post, index) => (
+							<ListItem key={index} title={post.title} desc={post.body} />
+						))}
+				</div>
+			</section>
+		</div>
+	)
+}
 
-// export default App
+export default App
